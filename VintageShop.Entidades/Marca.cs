@@ -10,5 +10,7 @@ namespace VintageShop.Entidades
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
+
+        public virtual List<Zapato> ZapatosList { get; set; } = new List<Zapato>();
     }
 }

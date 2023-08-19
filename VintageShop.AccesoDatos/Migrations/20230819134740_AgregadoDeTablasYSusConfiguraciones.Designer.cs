@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VintageShop.AccesoDatos;
 
@@ -11,9 +12,11 @@ using VintageShop.AccesoDatos;
 namespace VintageShop.AccesoDatos.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230819134740_AgregadoDeTablasYSusConfiguraciones")]
+    partial class AgregadoDeTablasYSusConfiguraciones
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,7 +39,7 @@ namespace VintageShop.AccesoDatos.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("FormaDePagos", (string)null);
+                    b.ToTable("FormaDePagos");
                 });
 
             modelBuilder.Entity("VintageShop.Entidades.Marca", b =>
@@ -53,7 +56,7 @@ namespace VintageShop.AccesoDatos.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Marcas", (string)null);
+                    b.ToTable("Marcas");
                 });
 
             modelBuilder.Entity("VintageShop.Entidades.Pago", b =>
@@ -69,7 +72,7 @@ namespace VintageShop.AccesoDatos.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pagos", (string)null);
+                    b.ToTable("Pagos");
                 });
 
             modelBuilder.Entity("VintageShop.Entidades.Stock", b =>
@@ -91,7 +94,7 @@ namespace VintageShop.AccesoDatos.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Stocks", (string)null);
+                    b.ToTable("Stocks");
                 });
 
             modelBuilder.Entity("VintageShop.Entidades.Talle", b =>
@@ -112,7 +115,7 @@ namespace VintageShop.AccesoDatos.Migrations
 
                     b.HasIndex("ZapatoId");
 
-                    b.ToTable("Talles", (string)null);
+                    b.ToTable("Talles");
                 });
 
             modelBuilder.Entity("VintageShop.Entidades.Usuario", b =>
@@ -137,7 +140,7 @@ namespace VintageShop.AccesoDatos.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Usuarios", (string)null);
+                    b.ToTable("Usuarios");
                 });
 
             modelBuilder.Entity("VintageShop.Entidades.Zapato", b =>
@@ -164,7 +167,7 @@ namespace VintageShop.AccesoDatos.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Zapatos", (string)null);
+                    b.ToTable("Zapatos");
                 });
 
             modelBuilder.Entity("VintageShop.Entidades.Talle", b =>

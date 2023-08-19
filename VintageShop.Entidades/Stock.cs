@@ -12,5 +12,8 @@ namespace VintageShop.Entidades
         public int IdZapato { get; set; }
         public int IdTalle { get; set; }
         public int Cantidad { get; set; }
+
+        public virtual Zapato Zapato { get; set; }
+        public virtual Talle Talle { get; set; }
     }
 }

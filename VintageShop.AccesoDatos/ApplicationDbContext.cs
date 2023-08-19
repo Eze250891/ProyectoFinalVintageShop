@@ -45,9 +45,6 @@ namespace VintageShop.AccesoDatos
                 .HasKey(x => x.Id);
 
             modelBuilder.Entity<Zapato>()
-                .Property(x => x.IdTalle);
-
-            modelBuilder.Entity<Zapato>()
                .Property(x => x.Modelo)
                .IsRequired();
 
@@ -58,6 +55,17 @@ namespace VintageShop.AccesoDatos
             modelBuilder.Entity<Zapato>()
                .Property(x => x.Imagen);
 
+            modelBuilder.Entity<Zapato>()
+                        .HasOne(x => x.Marca)
+                        .WithMany(m => m.ZapatosList)
+                        .HasForeignKey(x => x.IdMarca);
+
+            //modelBuilder.Entity<Zapato>()
+            //            .HasOne(x => x.TallesList)
+            //            .WithMany(m => m)
+
+
+
             //--------Talle--------
 
             modelBuilder.Entity<Talle>()
@@ -66,13 +74,32 @@ namespace VintageShop.AccesoDatos
             modelBuilder.Entity<Talle>()
                 .Property(x => x.TalleNumero);
 
+            modelBuilder.Entity<Talle>()
+                        .HasOne(x => x.Zapato)
+                        .WithMany(m => m.TallesList)
+                        .HasForeignKey(x => x.IdZapato);
+                       
+
             //--------Pago--------
 
             modelBuilder.Entity<Pago>()
-                .HasKey(x => x.Id);
+                        .HasKey(x => x.Id);
+
             modelBuilder.Entity<Pago>()
-                .Property(x => x.IdFormaDePago)
-                .IsRequired();
+                        .Property(x => x.IdFormaDePago)
+                        .IsRequired();
+
+            modelBuilder.Entity<Pago>()
+                        .HasOne(fp => fp.FormaDePagoUtilizada)
+                        .WithMany(fp => fp.Pagos)
+                        .HasForeignKey(x => x.IdFormaDePago);
+
+            modelBuilder.Entity<Pago>()
+                        .HasOne(z => z.ZapatoSeleccionado)
+                        .WithMany(p => p.PagoUtilizado)
+                        .HasForeignKey(x => x.IdPrecioZapato);
+
+
 
             //--------FormaDePago--------
 
@@ -108,6 +135,15 @@ namespace VintageShop.AccesoDatos
             modelBuilder.Entity<Stock>()
                 .Property(x => x.Cantidad)
                 .IsRequired();
+
+            modelBuilder.Entity<Stock>()
+                        .HasOne(z => z.Zapato)
+                        .WithMany(s => s.StocksList)
+                        .HasForeignKey(t =>t.IdTalle);
+                        
+
+
+
 
         }
     }
