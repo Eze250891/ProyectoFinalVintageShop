@@ -8,5 +8,7 @@
         public double Precio { get; set; }
         public string Imagen { get; set; }
 
+        public HashSet<Talle> Talles { get; set; } = new HashSet<Talle>();
+
     }
 }
